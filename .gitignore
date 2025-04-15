@@ -1,0 +1,31 @@
+# 환경 변수 파일
+.env
+.env.local
+
+# Python 가상 환경
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE 관련 파일
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 운영체제 파일
+.DS_Store
+Thumbs.db
+
+# 로그 파일
+*.log
+
+# 프로젝트 특정
+*.secret
+secrets.toml 

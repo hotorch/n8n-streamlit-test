@@ -1,60 +1,85 @@
-# N8N 워크플로우 & 스트림릿 채팅 인터페이스
+# Streamlit LLM 채팅 앱
 
-이 프로젝트는 n8n 워크플로우와 Streamlit 채팅 인터페이스를 결합하여 사용자 정의 AI 챗봇을 구현하는 예제입니다.
+이 앱은 n8n 웹훅을 통해 LLM과 채팅할 수 있는 Streamlit 애플리케이션입니다.
 
-## 프로젝트 개요
+## ⚠️ 중요: 환경 변수 설정 필수
 
-- **N8N 워크플로우**: AI 모델(LLM)과 연결하여 채팅 로직을 처리합니다.
-- **Streamlit 인터페이스**: 사용자 친화적인 채팅 웹 인터페이스를 제공합니다.
+애플리케이션을 실행하기 전에 반드시 `WEBHOOK_URL` 환경 변수를 설정해야 합니다. 이는 보안상의 이유로 코드에 직접 URL을 포함시키지 않기 위함입니다.
 
-## 설치 방법
+### 환경 변수 설정 방법:
 
-1. 저장소 클론하기:
-    ```bash
-    git clone https://github.com/yourusername/streamlit-n8n.git
-    cd streamlit-n8n
-    ```
+1. 직접 환경 변수 설정:
+```bash
+# Windows
+set WEBHOOK_URL=your_webhook_url_here
 
-2. 필요한 패키지 설치:
-    ```bash
-    pip install -r requirements.txt
-    ```
+# Mac/Linux
+export WEBHOOK_URL=your_webhook_url_here
+```
 
-## 사용 방법
+2. .env 파일 사용 (추천):
+```bash
+# .env.example 파일을 복사하여 .env 파일 생성
+cp .env.example .env
 
-1. Streamlit 앱 실행:
-    ```bash
-    streamlit run app.py
-    ```
+# .env 파일을 편집하여 실제 웹훅 URL 입력
+```
 
-2. 웹 브라우저에서 앱 접속 (기본적으로 http://localhost:8501)
+## 설치 및 실행 방법
 
-3. 사이드바에서 N8N 웹훅 URL을 입력하고 채팅 시작
+1. 필요한 패키지 설치:
+```bash
+pip install -r requirements.txt
+```
 
-## N8N 워크플로우 설정
+2. 로컬에서 앱 실행:
+```bash
+streamlit run app.py
+```
 
-1. N8N에 로그인하고 새 워크플로우 생성 또는 제공된 JSON 파일 가져오기:
-   - `simple_chat_X_streamlit.json` 파일을 N8N으로 가져와서 워크플로우 설정
+## 배포 방법
 
-2. 워크플로우 활성화 후 웹훅 URL 복사:
-   - 워크플로우에서 웹훅 노드를 선택하고 웹훅 URL을 복사합니다.
+### Streamlit Cloud를 통한 배포
 
-3. 해당 웹훅 URL을 Streamlit 앱의 사이드바에 있는 입력란에 붙여넣기
+1. [Streamlit Cloud](https://streamlit.io/cloud)에 가입하세요.
+2. GitHub에 이 프로젝트를 업로드하세요.
+3. Streamlit Cloud에서 "New app" 버튼을 클릭하세요.
+4. GitHub 저장소, 브랜치, 앱 파일 경로(app.py)를 선택하세요.
+5. **고급 설정에서 반드시 `WEBHOOK_URL` 환경 변수를 설정하세요.**
+6. "Deploy"를 클릭하세요.
 
-## 워크플로우 커스터마이징
+### Heroku를 통한 배포
 
-n8n 워크플로우를 다음과 같이 커스터마이징 할 수 있습니다:
+1. [Heroku](https://www.heroku.com/)에 가입하세요.
+2. Heroku CLI를 설치하세요.
+3. 프로젝트 루트에 다음 내용의 `Procfile`을 생성하세요:
+```
+web: streamlit run app.py --server.port=$PORT
+```
+4. 환경 변수 설정:
+```bash
+heroku config:set WEBHOOK_URL=your_webhook_url_here
+```
+5. 배포:
+```bash
+git push heroku main
+```
 
-1. 다른 AI 모델 사용 (GPT-4, Claude 등)
-2. 프롬프트 엔지니어링 변경
-3. RAG (Retrieval Augmented Generation) 시스템 추가
-4. 외부 API 통합
+### 기타 플랫폼
 
-## 참고사항
+- [Railway](https://railway.app/)
+- [Render](https://render.com/)
+- [AWS EC2](https://aws.amazon.com/ec2/)
+- [Google Cloud Run](https://cloud.google.com/run)
 
-- 이 프로젝트는 교육 목적으로 작성되었습니다.
-- 실제 프로덕션 환경에서는 보안 및 오류 처리를 강화해야 합니다.
+## 환경 변수
 
-## 라이센스
+이 앱은 다음 환경 변수를 **필수로** 사용합니다:
 
-MIT 
+- `WEBHOOK_URL`: n8n 웹훅 URL (보안을 위해 반드시 환경 변수로 설정해야 합니다)
+
+## 보안 주의사항
+
+- 웹훅 URL을 코드에 하드코딩하거나 공개 저장소에 포함시키지 마세요.
+- 항상 환경 변수나 비밀 관리 서비스를 통해 관리하세요.
+- 배포 플랫폼의 보안 설정을 확인하고 환경 변수가 안전하게 관리되는지 확인하세요. 

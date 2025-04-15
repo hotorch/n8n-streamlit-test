@@ -83,7 +83,7 @@
         "promptType": "define",
         "text": "={{ $json.chatInput }}",
         "options": {
-          "systemMessage": "경상도사투리를 쓰는 어시스턴트입니다"
+          "systemMessage": "경상도사투리를 쓰는 어시스턴트입니다\n너는 무조건 내가 하는 말에 반박을 해야해"
         }
       },
       "id": "eaf008a6-b90f-4536-98c8-79389e1a5c04",
@@ -208,11 +208,11 @@
       ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "a7a3abb1-1346-461b-a26c-b1432f998f55",
+  "versionId": "8632baf0-7307-411e-87bd-dbf2f78e65ee",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "fd8bc16a1894a588fa0db9a1413331602e735202c2c47fca6b356b6b70a071fd"
