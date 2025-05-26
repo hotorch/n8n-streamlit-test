@@ -7,10 +7,29 @@ from dotenv import load_dotenv
 # 환경 변수 로드
 load_dotenv()
 
+def load_webhook_url():
+    """config.txt 파일에서 웹훅 URL을 읽어오거나, 없으면 환경변수에서 가져옴"""
+    # 1. config.txt 파일에서 읽기 시도
+    try:
+        with open('config.txt', 'r', encoding='utf-8') as f:
+            content = f.read().strip()
+            if content and not content.startswith('#'):
+                return content
+    except FileNotFoundError:
+        pass
+    
+    # 2. 환경변수에서 읽기 (fallback)
+    webhook_url = os.environ.get("WEBHOOK_URL")
+    if webhook_url:
+        return webhook_url
+    
+    return None
+
 # Constants
-WEBHOOK_URL = os.environ.get("WEBHOOK_URL")
+WEBHOOK_URL = load_webhook_url()
 if not WEBHOOK_URL:
-    st.error("웹훅 URL이 설정되지 않았습니다. 환경 변수 WEBHOOK_URL을 설정해주세요.")
+    st.error("웹훅 URL이 설정되지 않았습니다. config.txt 파일에 웹훅 URL을 입력하거나 환경 변수 WEBHOOK_URL을 설정해주세요.")
+    st.info("config.txt 파일을 생성하고 첫 번째 줄에 웹훅 URL을 입력해주세요.")
     st.stop()
 
 def generate_session_id():

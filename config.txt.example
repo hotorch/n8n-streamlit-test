@@ -1,0 +1,6 @@
+# config.txt 파일 예시
+# 아래 줄의 주석(#)을 제거하고 실제 웹훅 URL로 변경하세요
+# https://your-n8n-instance.app.n8n.cloud/webhook/your-webhook-id
+
+# 예시:
+# https://samhottman4444.app.n8n.cloud/webhook/a10f75b5-966e-498f-a334-3924fe93e81f 

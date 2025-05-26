@@ -2,27 +2,64 @@
 
 이 앱은 n8n 웹훅을 통해 LLM과 채팅할 수 있는 Streamlit 애플리케이션입니다.
 
-## ⚠️ 중요: 환경 변수 설정 필수
+## 🚀 빠른 시작 (강의용)
 
-애플리케이션을 실행하기 전에 반드시 `WEBHOOK_URL` 환경 변수를 설정해야 합니다. 이는 보안상의 이유로 코드에 직접 URL을 포함시키지 않기 위함입니다.
+### 1. 웹훅 URL 설정
+`config.txt.example` 파일을 참고하여 `config.txt` 파일을 생성하고 웹훅 URL을 입력하세요:
 
-### 환경 변수 설정 방법:
+```bash
+# config.txt.example 파일을 복사
+cp config.txt.example config.txt
 
-1. 직접 환경 변수 설정:
+# config.txt 파일을 편집하여 웹훅 URL 입력
+# 예시: https://your-n8n-instance.app.n8n.cloud/webhook/your-webhook-id
+```
+
+### 2. 앱 실행
+```bash
+# 필요한 패키지 설치
+pip install -r requirements.txt
+
+# 앱 실행
+streamlit run app.py
+```
+
+브라우저에서 `http://localhost:8501`로 접속하여 채팅을 시작하세요!
+
+## ⚙️ 설정 방법
+
+이 앱은 웹훅 URL을 다음 순서로 찾습니다:
+
+1. **config.txt 파일** (추천 - 강의용)
+2. **환경 변수** (.env 파일 또는 시스템 환경 변수)
+
+### 방법 1: config.txt 파일 사용 (추천)
+
+```bash
+# 1. config.txt 파일 생성
+echo "https://your-webhook-url-here" > config.txt
+
+# 2. 앱 실행
+streamlit run app.py
+```
+
+### 방법 2: 환경 변수 사용
+
+#### .env 파일 사용:
+```bash
+# .env.example 파일을 복사하여 .env 파일 생성
+cp .env.example .env
+
+# .env 파일을 편집하여 실제 웹훅 URL 입력
+```
+
+#### 직접 환경 변수 설정:
 ```bash
 # Windows
 set WEBHOOK_URL=your_webhook_url_here
 
 # Mac/Linux
 export WEBHOOK_URL=your_webhook_url_here
-```
-
-2. .env 파일 사용 (추천):
-```bash
-# .env.example 파일을 복사하여 .env 파일 생성
-cp .env.example .env
-
-# .env 파일을 편집하여 실제 웹훅 URL 입력
 ```
 
 ## 설치 및 실행 방법
