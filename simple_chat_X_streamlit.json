@@ -1,23 +1,22 @@
 {
-  "name": "simple chat X streamlit",
   "nodes": [
     {
       "parameters": {
         "model": "gpt-4.1-mini",
         "options": {}
       },
-      "id": "df46b753-350f-443a-866f-78eba8a7f8e4",
+      "id": "4be4f347-8789-494e-8c79-ce84580daf28",
       "name": "OpenAI Chat Model",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1,
       "position": [
-        -840,
+        320,
         340
       ],
       "credentials": {
         "openAiApi": {
-          "id": "gHPCWbHNGiB51E2F",
-          "name": "OpenAi account"
+          "id": "PD5EnFPBvpRGoH8Z",
+          "name": "OpenAi account 2"
         }
       }
     },
@@ -27,12 +26,12 @@
         "height": 464.8027193303974,
         "width": 1035.6381264595484
       },
-      "id": "b6fddf3c-29a2-493f-9641-66f4e26caec1",
+      "id": "b75b7f1a-da22-4acc-b631-40e8a4f201a4",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1220,
+        -60,
         20
       ]
     },
@@ -40,12 +39,12 @@
       "parameters": {
         "options": {}
       },
-      "id": "261267c8-0c6d-4a1b-a9a7-6de8b8ef19f9",
+      "id": "942449cc-e337-4169-b533-e7c3731e64cf",
       "name": "Respond to Webhook",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.1,
       "position": [
-        -400,
+        760,
         120
       ]
     },
@@ -69,12 +68,12 @@
         },
         "options": {}
       },
-      "id": "00524cd1-973b-4275-be2d-58a903892fd6",
+      "id": "1320574a-0890-4dfa-8dfa-cefcb451411e",
       "name": "Edit Fields",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -960,
+        200,
         120
       ]
     },
@@ -86,12 +85,12 @@
           "systemMessage": "경상도사투리를 쓰는 어시스턴트입니다\n너는 무조건 내가 하는 말에 반박을 해야해"
         }
       },
-      "id": "eaf008a6-b90f-4536-98c8-79389e1a5c04",
+      "id": "d2aee1ef-f294-46a3-91ce-21131067c2e2",
       "name": "RAG AI Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.6,
       "position": [
-        -740,
+        420,
         120
       ]
     },
@@ -100,12 +99,12 @@
         "public": true,
         "options": {}
       },
-      "id": "2081bc90-6f75-42ee-b7bd-b537fd45557f",
+      "id": "84c85f75-c006-4c7e-bc6e-6084aaaa7243",
       "name": "When chat message received",
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1220,
+        -20,
         120
       ],
       "webhookId": "77656aec-4b87-4f73-9c8e-3ad915652c54"
@@ -117,12 +116,12 @@
         "responseMode": "responseNode",
         "options": {}
       },
-      "id": "7b14462e-d515-4e51-8960-6a9d658b1591",
+      "id": "e1f88f35-c560-4884-b9f4-179ada4f608b",
       "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -1180,
+        -20,
         300
       ],
       "webhookId": "a10f75b5-966e-498f-a334-3924fe93e81f"
@@ -132,14 +131,13 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        -660,
-        340
+        500,
+        360
       ],
-      "id": "ae53ada9-15ee-4b7a-a37d-27474f991273",
+      "id": "6150d21d-7b7f-432a-8ee0-d1074ad234e2",
       "name": "Simple Memory"
     }
   ],
-  "pinData": {},
   "connections": {
     "OpenAI Chat Model": {
       "ai_languageModel": [
@@ -208,15 +206,8 @@
       ]
     }
   },
-  "active": true,
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "versionId": "8632baf0-7307-411e-87bd-dbf2f78e65ee",
+  "pinData": {},
   "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "fd8bc16a1894a588fa0db9a1413331602e735202c2c47fca6b356b6b70a071fd"
-  },
-  "id": "WGkT1rNJVeQkdxlW",
-  "tags": []
+    "instanceId": "ae646c7011666fd7c9351a02d4740fc3c1442ce61d1385fc0247e2de5cd87955"
+  }
 }
